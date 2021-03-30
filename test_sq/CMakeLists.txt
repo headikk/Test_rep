@@ -4,7 +4,7 @@ Task1.1.cpp
 )
 
 # создаем статическую библиотеку
-add_library(sq_lib ${SOURCES})
+add_library(Task1.1 ${SOURCES})
 
 # добавлем путь к исходникам для возожности подключения библиотеки
 target_include_directories(Task1.1 PUBLIC ${SRC_ROOT_DIR})
