@@ -1,7 +1,6 @@
 # задаем набор исходников
 set(SOURCES
-square_library.h
-square_library.cpp
+Task1.1.cpp
 )
 
 # создаем статическую библиотеку
