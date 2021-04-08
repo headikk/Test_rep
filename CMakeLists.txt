@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.9.3)
 
 # устанавливаем имя проекта
-project(Test_prj CXX)
+project(Task1.1 CXX)
 
 # устанавливаем директории в которые будут собираться библиотеки и исполняемые файлы
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)

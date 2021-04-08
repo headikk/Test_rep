@@ -4,13 +4,13 @@ set(SOURCES
 )
 
 # создаем исполняемый файл
-add_executable(sqlib_test ${SOURCES})
+add_executable(test ${SOURCES})
 
 # подключаем библиотеки:
 # 1. Тестируемая библиотека
 # 2. gest
-target_link_libraries(sqlib_test PUBLIC sq_lib)
-target_link_libraries(sqlib_test PUBLIC gtest_main)
+target_link_libraries(tests PUBLIC Task1.1)
+target_link_libraries(tests PUBLIC gtest_main)
 
-# В solution эта библиотека лежит в tests/sqlib_test
-set_property(TARGET sqlib_test PROPERTY FOLDER "tests/sqlib_test")
+# В solution эта библиотека лежит в tests/tests
+set_property(TARGET tests PROPERTY FOLDER "tests/tests")
