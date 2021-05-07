@@ -1,31 +1,25 @@
-# требуем минимальную версию cmake
-cmake_minimum_required(VERSION 3.9.3)
+cmake_minimum_required(VERSION 3.10)
+project(Project)
+set(CMAKE_CXX_STANDARD 17)
 
-# устанавливаем имя проекта
-project(Test_prj CXX)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
-# устанавливаем директории в которые будут собираться библиотеки и исполняемые файлы
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+enable_testing()
 
-# устанавливаем дополнительные флаги компиляции для visual studio
-if(MSVC)
-    add_compile_options(
-        $<$<CONFIG:>:/MT>
-        $<$<CONFIG:Debug>:/MTd>
-        $<$<CONFIG:Release>:/MT>
-    )
-endif()
+add_executable(
+  hello_test
+  tests.cc
+)
+target_link_libraries(
+  hello_test
+  gtest_main
+)
 
-# устанавливаем стандарт c++
-set(CMAKE_CXX_STANDARD 14)
-
-# органезуем таргеты по директорям
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-# устанавливаем переменную в которой содержится путь к папке с исходниками
-set(SRC_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/test_sq)
-
-# включаем в сборку проекта подпроект с тестами
-add_subdirectory(test_sq)
-add_subdirectory(gtest)
+include(GoogleTest)
+gtest_discover_tests(hello_test)
